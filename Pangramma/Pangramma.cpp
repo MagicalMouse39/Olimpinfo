@@ -8,11 +8,11 @@ int conta(int N, int K, vector<int>& V) {
         int subCounter = 0;
 
         for (int i = 0; i < N; i++) { //    i = POSIZIONE IN V[]
-            if (i != 0 && i % index == 0)
+            if (i != 0 && i % index == 0) //    Ogni INDEX volte: 
             {
                 subV[subCounter] = V[i];
                 subCounter = 0;
-                
+
             }
             else
                 subV[subCounter++] = V[i];
