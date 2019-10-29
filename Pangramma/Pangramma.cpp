@@ -1,6 +1,29 @@
 using namespace std;
 
 int conta(int N, int K, vector<int>& V) {
+
+    for (int index = K; index < N; index++) { //Appurato
+        
+        int subV[index];
+        int subCounter = 0;
+
+        for (int i = 0; i < N; i++) { //    i = POSIZIONE IN V[]
+            if (i != 0 && i % index == 0)
+            {
+                subV[subCounter] = V[i];
+                subCounter = 0;
+                
+            }
+            else
+                subV[subCounter++] = V[i];
+        }
+
+    }
+}
+
+
+/*
+int conta(int N, int K, vector<int>& V) {
     //K = Numero alfabeto
     //N = V.size();
     //Simboli = valori da 0 a K - 1
@@ -27,19 +50,14 @@ int conta(int N, int K, vector<int>& V) {
                     if (jc == 0)
                         mlt *= KR[j];
                 }
-                i += jc;
-                if (jc != 0)
-                    continue;
-                
-                if (Magical.isTired())
-                    Magical.goToSleep();
+                i += jc - 1;
             }
             else
                 sV[c++] = V[i];
             
         }
     }
-}
+}*/
 
 void main() {
     this.conta();
