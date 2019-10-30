@@ -88,3 +88,76 @@ int main() {
     cout << conta(5, 3, V) << endl;
     return 0;
 }
+
+
+
+----
+----
+----
+----
+#include <cstdio>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+
+int conta(int N, int K, std::vector<int>& V)
+{
+	int c = 0;
+	for (int index = K; index < N; index++)
+	{
+		for (int i = 0; i <= N - index; i++)
+		{	
+			int subVector[index];
+			
+			for (int j = 0; j < index; j++)
+				subVector[j] = V[i+j];
+			
+			unsigned int verify[K];
+			
+			for (int j = 0; j < K; j++)
+				verify[j] = 0;
+				
+			bool found = true;
+			
+			for (int j = 0; j < index; j++)
+				verify[subVector[j]]++;
+			
+			//std::cout << "V: ";
+			
+			for (int j = 0; j < K; j++)
+				if (verify[j] == 0 || verify[j] == 4199875)
+					found = false;
+		
+			std::cout << found << ":";
+			for (int j = 0; j < index; j++)
+				std::cout << verify[j] << ":";
+			std::cout << std::endl;
+		
+			if (found)
+				c++;
+				
+			//std::cout << "Indice: " << index << std::endl;
+		}
+		if (c > 0)
+			return c;
+	}
+	return c;
+}
+
+int main() {
+    // Input da file:
+    // freopen("input.txt", "r", stdin);
+
+    // Output su file:
+    // freopen("output.txt", "w", stdout);
+
+    size_t n, k;
+    std::cin >> n >> k;
+    std::vector<int> v(n);
+    for(size_t i = 0; i < n; i++) {
+        std::cin >> v[i];
+    }
+    
+    std::cout << std::endl << std::endl << "Risultato: " << conta(n, k, v) << std::endl;
+    return 0;
+}
