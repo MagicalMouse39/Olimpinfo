@@ -1,3 +1,4 @@
+#include <iostream>
 using namespace std;
 
 int conta(int N, int K, int *V) {
