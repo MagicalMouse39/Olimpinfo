@@ -6,17 +6,35 @@ int conta(int N, int K, vector<int>& V) {
         
         int subV[index];
         int subCounter = 0;
+        int panCounter = 0;
 
         for (int i = 0; i < N; i++) { //    i = POSIZIONE IN V[]
-            if (i != 0 && i % index == 0) //    Ogni INDEX volte: 
-            {
+            if (i != 0 && i % index == 0) { //    Ogni INDEX volte:
                 subV[subCounter] = V[i];
                 subCounter = 0;
+                unsigned int KR[K];
 
+                for (int j = 0; j < index; j++)
+                    KR[sV[j]]++;
+                
+                int multicount = 0;
+                int mulitiplier = 1;
+
+                for (int j = 0; j < K; j++) {
+                    if (KR[j] == 0)
+                        multicount++;
+                    if (multicount == 0)
+                        mulitiplier *= KR[j];
+                }
+
+                i += multicount;
             }
             else
                 subV[subCounter++] = V[i];
         }
+
+        if (panCounter > 0)
+            break;
 
     }
 }
