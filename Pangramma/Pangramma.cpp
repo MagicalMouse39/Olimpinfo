@@ -1,12 +1,12 @@
 using namespace std;
 
-int conta(int N, int K, vector<int>& V) {
-
+int conta(int N, int K, int *V) {
+    
+    int panCounter = 0;
     for (int index = K; index < N; index++) { //Appurato
         
         int subV[index];
         int subCounter = 0;
-        int panCounter = 0;
 
         for (int i = 0; i < N; i++) { //    i = POSIZIONE IN V[]
             if (i != 0 && i % index == 0) { //    Ogni INDEX volte:
@@ -15,7 +15,7 @@ int conta(int N, int K, vector<int>& V) {
                 unsigned int KR[K];
 
                 for (int j = 0; j < index; j++)
-                    KR[sV[j]]++;
+                    KR[subV[j]]++;
                 
                 int multicount = 0;
                 int mulitiplier = 1;
@@ -27,7 +27,11 @@ int conta(int N, int K, vector<int>& V) {
                         mulitiplier *= KR[j];
                 }
 
+                if (multicount == 0)
+                    panCounter += mulitiplier;
+
                 i += multicount;
+
             }
             else
                 subV[subCounter++] = V[i];
@@ -37,6 +41,8 @@ int conta(int N, int K, vector<int>& V) {
             break;
 
     }
+
+    return panCounter;
 }
 
 
@@ -75,8 +81,9 @@ int conta(int N, int K, vector<int>& V) {
             
         }
     }
-}*/
-
-void main() {
-    this.conta();
+    */
+int main() {
+    int V[5] = {0,0,1,2,0};
+    cout << conta(5, 3, V) << endl;
+    return 0;
 }
